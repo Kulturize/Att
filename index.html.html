@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ALL THAT TRAVEL 2027 — 관광 신산업 하이브리드 플랫폼</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --paper:#FFFFFF; --paper2:#F4F6F8; --ink:#1A1A1A;
+  --sky:#33B8E8; --tang:#E8392A; --sun:#FFC107; --mint:#00C896;
+  --w:#fff;
+  --dp:'Bricolage Grotesque','Pretendard',sans-serif;
+  --bd:'Pretendard',-apple-system,sans-serif;
+  --mn:'DM Mono','Pretendard',monospace;
+  --mxw:1260px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--bd);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none} button{font-family:inherit;cursor:pointer}
+img{max-width:100%;display:block}
+body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.015;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.wrap{max-width:var(--mxw);margin:0 auto;padding:0 36px}
+.mono{font-family:var(--mn)} .dp{font-family:var(--dp)}
+.tag{font-family:var(--mn);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:30px;border:1.5px solid currentColor;display:inline-block}
+.tag.btc{color:var(--sky);background:#EEF4FF;border-color:var(--sky)}
+.tag.btb{color:var(--tang);background:#FFF2EE;border-color:var(--tang)}
+
+/* ─── TICKER ─── */
+.ticker{background:var(--sky);color:#fff;border-bottom:2.5px solid var(--ink);overflow:hidden;white-space:nowrap;padding:8px 0;position:relative;z-index:80}
+.ticker-track{display:inline-flex;gap:44px;animation:scroll 28s linear infinite}
+.ticker-track span{font-family:var(--mn);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─── TOP BAR (SNS + 마이페이지 + ENG) ─── */
+.topbar{background:var(--paper2);color:#6a6a6a;border-bottom:1px solid #e0e4e8;padding:0}
+.topbar-in{display:flex;align-items:center;justify-content:flex-end;height:36px;gap:6px}
+.topbar-in a{font-family:var(--mn);font-size:11px;letter-spacing:.06em;color:#6a6a6a;padding:6px 10px;transition:color .15s;display:flex;align-items:center;gap:6px}
+.topbar-in a:hover{color:var(--tang)}
+.topbar-in .divider{width:1px;height:16px;background:#d0d5da}
+.sns-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1.5px solid #d0d5da;background:transparent;transition:background .15s,border-color .15s}
+.sns-icon:hover{border-color:var(--tang);background:var(--tang)}
+.sns-icon:hover svg{color:#fff}
+.sns-icon svg{color:#6a6a6a;transition:color .15s}
+
+/* ─── GNB ─── */
+nav{position:sticky;top:0;z-index:70;background:var(--paper);border-bottom:2px solid #e0e4e8;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.nav-in{display:flex;align-items:stretch;height:64px;gap:0}
+.logo{font-family:var(--dp);font-weight:800;font-size:19px;letter-spacing:-.02em;display:flex;align-items:center;gap:9px;padding-right:32px;border-right:2px solid #e0e4e8;white-space:nowrap}
+.logo .dot{width:10px;height:10px;background:var(--tang);border:none;border-radius:50%;flex-shrink:0}
+.gnb{display:flex;align-items:stretch;flex:1}
+.gnb-item{position:relative}
+.gnb-btn{height:100%;padding:0 18px;font-family:var(--dp);font-weight:700;font-size:15px;background:none;border:none;border-right:1px solid #f0f2f4;color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:6px;transition:color .15s}
+.gnb-btn:hover,.gnb-btn.open{color:var(--tang)}
+.gnb-btn .arr{font-size:10px;opacity:.5;transition:transform .2s}
+.gnb-btn.open .arr{transform:rotate(180deg)}
+.gnb-drop{position:absolute;top:100%;left:0;min-width:210px;background:var(--paper);border:1.5px solid #e0e4e8;border-top:3px solid var(--tang);z-index:100;display:none;box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.gnb-drop.show{display:block;animation:fade .18s ease}
+.gnb-drop a{display:block;padding:12px 20px;font-size:14px;font-weight:600;border-bottom:1px solid #f0f2f4;transition:background .12s,color .12s,padding-left .12s;color:var(--ink)}
+.gnb-drop a:last-child{border-bottom:none}
+.gnb-drop a:hover{background:var(--paper2);color:var(--tang);padding-left:26px}
+.gnb-drop a.new::after{content:"NEW";font-family:var(--mn);font-size:9px;background:var(--tang);color:#fff;padding:2px 6px;border-radius:10px;margin-left:8px;letter-spacing:.06em}
+.gnb-drop a.hot::after{content:"★";color:var(--tang);margin-left:6px}
+.gnb-drop .drop-divider{height:1px;background:#e0e4e8;margin:4px 0}
+.gnb-drop .drop-label{font-family:var(--mn);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#aaa;padding:10px 20px 4px}
+.nav-end{display:flex;align-items:center;gap:10px;margin-left:auto;padding-left:20px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--dp);font-weight:700;font-size:14px;padding:11px 20px;border:2px solid transparent;background:var(--sky);color:#fff;box-shadow:none;transition:opacity .15s,transform .1s;border-radius:4px;cursor:pointer}
+.btn:hover{opacity:.88;transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn.tang{background:var(--tang)}
+.btn.ink{background:var(--ink);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff;transform:none}
+.btn.lg{font-size:16px;padding:15px 28px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px}
+.burger span{width:24px;height:2.5px;background:var(--ink);display:block}
+
+/* ─── QUICK MENU (fixed) ─── */
+.quick{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:8px}
+.quick a{width:52px;height:52px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:#fff;color:var(--ink);border:1.5px solid #e0e4e8;font-family:var(--mn);font-size:9px;letter-spacing:.04em;text-align:center;transition:background .15s,color .15s,border-color .15s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.quick a:hover{background:var(--tang);color:#fff;border-color:var(--tang)}
+.quick a.ig:hover{background:#E1306C;border-color:#E1306C}
+.quick a svg{flex-shrink:0}
+
+/* ─── HERO (video bg) ─── */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero-vid{position:absolute;inset:0;z-index:0}
+.hero-vid video,.hero-vid .vid-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-vid .vid-ph{background:linear-gradient(135deg,#0d1b3e 0%,#1a3a6b 40%,#0c3352 70%,#0a1f3d 100%);display:flex;align-items:center;justify-content:center}
+.hero-vid .vid-ph .ph-text{font-family:var(--dp);font-weight:800;font-size:clamp(14px,2vw,22px);color:rgba(255,255,255,.12);letter-spacing:.2em;text-transform:uppercase}
+.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(12,16,30,.2) 0%,rgba(12,16,30,.55) 60%,rgba(12,16,30,.82) 100%)}
+.hero-content{position:relative;z-index:2;padding:0 0 72px;width:100%}
+.hero-kicker{font-family:var(--mn);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.hero-kicker::before{content:"";width:28px;height:2px;background:var(--tang)}
+.hero h1{font-family:var(--dp);font-weight:800;font-size:clamp(38px,6.5vw,90px);line-height:.95;letter-spacing:-.03em;color:#fff;word-break:keep-all;text-wrap:balance;margin-bottom:24px}
+.hero h1 em{font-style:normal;background:var(--tang);padding:0 .1em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero-date{font-family:var(--mn);font-size:15px;color:rgba(255,255,255,.7);letter-spacing:.08em;margin-bottom:40px}
+/* ① 2버튼 분기 */
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.hero-btns .btn{font-size:16px;padding:16px 30px;box-shadow:5px 5px 0 rgba(0,0,0,.4)}
+.hero-btns .btn:hover{box-shadow:8px 8px 0 rgba(0,0,0,.4)}
+/* countdown strip */
+.hero-strip{position:absolute;bottom:0;left:0;right:0;z-index:3;background:rgba(18,16,10,.85);backdrop-filter:blur(8px);border-top:2px solid rgba(255,255,255,.1)}
+.hero-strip-in{display:flex;align-items:center;justify-content:space-between;height:60px;gap:24px;flex-wrap:wrap}
+.cd-group{display:flex;align-items:center;gap:6px}
+.cd-unit{text-align:center;min-width:40px}
+.cd-unit .n{font-family:var(--dp);font-weight:800;font-size:26px;color:#fff;line-height:1}
+.cd-unit .u{font-family:var(--mn);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:2px}
+.cd-sep{font-family:var(--dp);font-size:20px;color:rgba(255,255,255,.3);margin-bottom:8px}
+.strip-meta{font-family:var(--mn);font-size:12px;color:rgba(255,255,255,.55);letter-spacing:.08em}
+.strip-meta b{color:var(--sun)}
+
+/* ─── STATS ─── */
+.stats{background:var(--tang);border-top:none;border-bottom:none}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:40px 20px;border-right:1px solid rgba(255,255,255,.25);text-align:center}
+.stat:last-child{border-right:none}
+.stat .n{font-family:var(--dp);font-weight:800;font-size:clamp(38px,5vw,60px);line-height:1;color:#fff}
+.stat .n sub{font-size:.42em;color:rgba(255,255,255,.8)}
+.stat .t{font-family:var(--mn);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:8px}
+
+/* ─── SECTION SHARED ─── */
+section{padding:88px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:52px;flex-wrap:wrap}
+.sec-head h2{font-family:var(--dp);font-weight:800;font-size:clamp(30px,4.5vw,54px);line-height:.97;letter-spacing:-.025em;word-break:keep-all}
+.sec-head .num{font-family:var(--mn);font-size:13px;color:var(--tang);letter-spacing:.1em;display:block;margin-bottom:10px}
+.sec-head p{max-width:340px;font-size:15px;color:#4a463a;line-height:1.6}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ─── CONTENT HUB (보완01) ─── */
+.hub{background:var(--paper2)}
+.hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.hub-card{padding:30px 26px;border:1.5px solid #e0e4e8;border-radius:8px;background:#fff;transition:box-shadow .18s,transform .18s}
+.hub-card:hover{box-shadow:0 8px 28px rgba(232,57,42,.12);transform:translateY(-3px)}
+.hub-card .hc-tag{font-family:var(--mn);font-size:11px;color:var(--tang);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.hub-card h3{font-family:var(--dp);font-weight:700;font-size:20px;margin-bottom:10px;line-height:1.2}
+.hub-card p{font-size:14px;color:#5a6370;line-height:1.6;margin-bottom:18px}
+.hub-card .more{font-family:var(--mn);font-size:12px;letter-spacing:.06em;display:flex;align-items:center;gap:6px;color:var(--sky)}
+.insta-strip{margin-top:32px;border:1.5px solid #e0e4e8;border-radius:8px;overflow:hidden}
+.insta-strip-head{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--ink);color:#fff}
+.insta-strip-head span{font-family:var(--dp);font-weight:700;font-size:15px;display:flex;align-items:center;gap:10px}
+.insta-strip-head a{font-family:var(--mn);font-size:12px;color:#9a9a9a}
+.insta-grid{display:grid;grid-template-columns:repeat(6,1fr)}
+.insta-item{aspect-ratio:1;background:var(--paper2);border-right:1.5px solid #e0e4e8;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .15s}
+.insta-item:last-child{border-right:none}
+.insta-item:hover{opacity:.8}
+.insta-item .ph{font-size:26px;user-select:none}
+
+/* ─── GNB 5탭 구조 반영: WHY VISIT ─── */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{padding:32px 28px;border:1.5px solid #e0e4e8;border-radius:8px;background:#fff;transition:box-shadow .18s,transform .18s}
+.why-card:hover{box-shadow:0 8px 28px rgba(51,184,232,.15);transform:translateY(-3px)}
+.why-card .wc-ic{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;background:var(--sky)}
+.why-card:nth-child(2) .wc-ic{background:var(--tang)}
+.why-card:nth-child(3) .wc-ic{background:var(--ink)}
+.why-card h3{font-family:var(--dp);font-weight:700;font-size:20px;margin-bottom:8px}
+.why-card p{font-size:14px;color:#5a6370;line-height:1.6}
+
+/* ─── ZONE TRACKS ─── */
+.expo{background:var(--paper2)}
+.track-list{border-top:1.5px solid #e0e4e8}
+.track{display:grid;grid-template-columns:72px 1fr auto;gap:24px;align-items:center;padding:22px 16px;border-bottom:1.5px solid #e0e4e8;transition:background .18s,padding .18s;cursor:default}
+.track:hover{background:#fff;padding-left:24px}
+.track .tn{font-family:var(--mn);font-size:14px;color:var(--tang)}
+.track h3{font-family:var(--dp);font-weight:700;font-size:clamp(18px,2.4vw,26px)}
+.track p{font-size:14px;color:#5a6370;margin-top:4px}
+.track-tag{font-family:var(--mn);font-size:12px;padding:6px 14px;border:1.5px solid #e0e4e8;border-radius:30px;white-space:nowrap;color:#6a6a6a}
+.track:hover .track-tag{border-color:var(--sky);color:var(--sky)}
+
+/* ─── DESTINATIONS ─── */
+.dest{background:var(--paper2);color:var(--ink)}
+.dest .sec-head h2{color:var(--ink)}
+.dest .sec-head p{color:#5a6370}
+.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.dest-card{border:1.5px solid #e0e4e8;border-radius:8px;overflow:hidden;background:#fff;color:var(--ink);transition:transform .14s,box-shadow .14s}
+.dest-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,.1)}
+.dest-photo{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:44px;border-bottom:1.5px solid #e0e4e8;position:relative}
+.dest-card:nth-child(4n+1) .dest-photo{background:var(--sky)}
+.dest-card:nth-child(4n+2) .dest-photo{background:var(--tang)}
+.dest-card:nth-child(4n+3) .dest-photo{background:var(--sun)}
+.dest-card:nth-child(4n+4) .dest-photo{background:var(--mint)}
+.dest-flag{position:absolute;top:10px;left:10px;font-family:var(--mn);font-size:10px;background:var(--ink);color:#fff;padding:3px 8px;border-radius:20px;letter-spacing:.06em}
+.dest-info{padding:16px}
+.dest-info h3{font-family:var(--dp);font-weight:700;font-size:18px}
+.dest-info p{font-size:12px;color:#5a5546;margin-top:4px}
+
+/* ─── SCHEDULE TABS ─── */
+.sched-tabs{display:flex;border:1.5px solid #e0e4e8;border-radius:8px;overflow:hidden;width:fit-content;margin-bottom:32px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.sched-tab{padding:14px 26px;font-family:var(--dp);font-weight:700;font-size:15px;background:#fff;border-right:1.5px solid #e0e4e8;transition:.14s;cursor:pointer;border-top:none;border-bottom:none;border-left:none;white-space:nowrap}
+.sched-tab:last-child{border-right:none}
+.sched-tab.active{background:var(--sky);color:#fff}
+.sched-tab .d{font-family:var(--mn);font-size:10px;display:block;opacity:.65;font-weight:400;margin-top:2px}
+.sched-panel{display:none}
+.sched-panel.active{display:block;animation:fade .28s ease}
+@keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.slot{display:grid;grid-template-columns:128px 1fr auto;gap:20px;align-items:center;padding:18px 14px;border-bottom:1.5px solid var(--paper2)}
+.slot:first-child{border-top:1.5px solid #e0e4e8}
+.slot .time{font-family:var(--mn);font-size:14px}
+.slot h4{font-family:var(--dp);font-weight:700;font-size:18px}
+.slot .loc{font-size:12px;color:#5a5546;margin-top:3px}
+.badge{font-family:var(--mn);font-size:11px;padding:5px 12px;border-radius:30px;background:var(--paper2);border:1.5px solid #e0e4e8;white-space:nowrap;color:#5a6370}
+.badge.key{background:var(--tang);color:#fff;border-color:var(--tang)}
+
+/* ─── PERFORMANCE DATA (보완02) ─── */
+.perf{background:var(--ink);color:var(--paper)}
+.perf .sec-head h2{color:var(--paper)}
+.perf .sec-head p{color:#cfc8b4}
+.perf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.perf-card{background:#fff;border:1.5px solid #e0e4e8;border-radius:8px;padding:26px}
+.perf-card .pc-icon{font-size:28px;margin-bottom:14px}
+.perf-card h3{font-family:var(--dp);font-weight:700;font-size:19px;margin-bottom:8px;color:var(--ink)}
+.perf-card p{font-size:14px;color:#5a6370;line-height:1.6}
+.perf-num{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:48px;border:1.5px solid #e0e4e8;border-radius:8px;overflow:hidden;background:#fff}
+.pn{padding:28px 20px;border-right:1.5px solid #e0e4e8;text-align:center}
+.pn:last-child{border-right:none}
+.pn .v{font-family:var(--dp);font-weight:800;font-size:clamp(32px,4vw,52px);color:var(--tang);line-height:1}
+.pn .l{font-family:var(--mn);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a8a8a;margin-top:8px}
+
+/* ─── BOOTH MAP (보완03) ─── */
+.map-card{background:#fff;border:1.5px solid #e0e4e8;border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.map-header{background:var(--ink);color:var(--paper);padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
+.map-header span{font-family:var(--dp);font-weight:700;font-size:17px}
+.map-filters{display:flex;gap:8px;padding:14px 20px;border-bottom:1.5px solid #e0e4e8;flex-wrap:wrap}
+.mf{font-family:var(--mn);font-size:11px;padding:6px 14px;border-radius:30px;border:1.5px solid #d0d5da;background:#fff;cursor:pointer;transition:background .14s,border-color .14s,color .14s;letter-spacing:.04em;color:#5a6370}
+.mf.active,.mf:hover{background:var(--sky);color:#fff;border-color:var(--sky)}
+.map-body{padding:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;min-height:220px}
+.booth{background:var(--paper2);border:1.5px solid #e0e4e8;border-radius:6px;padding:14px 12px;cursor:pointer;transition:background .14s,transform .12s,box-shadow .14s;position:relative}
+.booth:hover{background:#EEF8FF;border-color:var(--sky);transform:scale(1.03);box-shadow:0 4px 12px rgba(51,184,232,.2)}
+.booth .b-zone{font-family:var(--mn);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-bottom:4px}
+.booth h4{font-family:var(--dp);font-weight:700;font-size:13px;line-height:1.3}
+.booth .b-type{font-family:var(--mn);font-size:9px;color:#5a5546;margin-top:4px;text-transform:uppercase}
+.booth.fav::after{content:"★";position:absolute;top:6px;right:8px;font-size:12px;color:var(--tang)}
+
+/* ─── VENUE ─── */
+.venue{background:var(--paper2)}
+.venue-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.venue-info h3{font-family:var(--dp);font-weight:800;font-size:clamp(26px,3.5vw,42px);letter-spacing:-.02em;margin-bottom:14px}
+.venue-info .addr{font-family:var(--mn);font-size:14px;color:#4a463a;margin:16px 0}
+.venue-feats{list-style:none;margin-top:20px}
+.venue-feats li{padding:12px 0;border-bottom:1.5px solid var(--ink);display:flex;align-items:center;gap:12px;font-size:15px}
+.venue-feats li::before{content:"→";color:var(--tang);font-weight:800}
+.venue-map{background:var(--sky);border:none;border-radius:12px;box-shadow:0 8px 32px rgba(51,184,232,.25);min-height:320px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.map-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px);background-size:38px 38px}
+.map-pin{text-align:center;position:relative;z-index:2;color:#fff;font-family:var(--dp);font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.map-pin .big{font-size:48px;display:block}
+
+/* ─── REGISTER ─── */
+.reg-section{background:var(--ink);padding:88px 0}
+.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.reg-left h2{font-family:var(--dp);font-weight:800;font-size:clamp(28px,4vw,48px);line-height:1.02;letter-spacing:-.025em;color:#fff;margin-bottom:16px;word-break:keep-all}
+.reg-left p{color:#cfc8b4;font-size:15px;margin-bottom:28px;line-height:1.6}
+.pass-type{background:#1c1a14;border:1.5px solid #2c291f;border-radius:4px;padding:16px 18px;margin-bottom:12px}
+.pass-type .pt-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.pass-type h4{font-family:var(--dp);font-weight:700;font-size:16px;color:#fff}
+.pass-type p{font-size:13px;color:#7a7363;line-height:1.5}
+.reg-form{background:var(--paper);border:1.5px solid #e0e4e8;border-radius:12px;padding:32px;box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.pass-tabs{display:flex;border:1.5px solid #e0e4e8;border-radius:8px;overflow:hidden;margin-bottom:22px}
+.pass-tab{flex:1;padding:12px 10px;font-family:var(--dp);font-weight:700;font-size:14px;background:#fff;border:none;border-right:1.5px solid #e0e4e8;cursor:pointer;transition:.14s;text-align:center;color:var(--ink)}
+.pass-tab:last-child{border-right:none}
+.pass-tab.active.btc{background:var(--sky);color:#fff}
+.pass-tab.active.btb{background:var(--tang);color:#fff}
+.pass-panel{display:none}
+.pass-panel.active{display:block;animation:fade .22s ease}
+label{font-family:var(--mn);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:7px;color:#5a5546}
+input,select{width:100%;padding:12px 14px;border:1.5px solid #d0d5da;border-radius:6px;font-family:var(--bd);font-size:14px;background:#fff;color:var(--ink);margin-bottom:14px}
+.form-ok{display:none;text-align:center;padding:28px 8px}
+.form-ok .ok-ic{width:68px;height:68px;border-radius:50%;background:var(--sky);color:#fff;display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 18px;border:2.5px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.form-ok h3{font-size:24px;font-family:var(--dp);font-weight:800;margin-bottom:8px}
+.form-ok p{font-size:14px;color:#4a463a}
+.form-ok .reg-num{font-family:var(--mn);font-size:13px;color:var(--sky);margin-top:12px;font-weight:500}
+
+/* ─── FAQ ─── */
+.faq-list{border-top:1.5px solid #e0e4e8}
+.faq-item{border-bottom:1.5px solid #e0e4e8}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:24px 8px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:var(--dp);font-weight:700;font-size:clamp(17px,2.2vw,22px);color:var(--ink)}
+.faq-q .pm{font-size:26px;transition:transform .22s;flex-shrink:0}
+.faq-item.open .pm{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-a p{padding:0 8px 24px;font-size:15px;color:#5a6370;max-width:740px;line-height:1.65}
+
+/* ─── FINAL CTA ─── */
+.final{background:var(--tang);border-top:none;padding:96px 0;text-align:center}
+.final h2{font-family:var(--dp);font-weight:800;font-size:clamp(36px,6.5vw,80px);line-height:.95;letter-spacing:-.03em;color:#fff}
+.final p{font-size:18px;color:rgba(255,255,255,.8);margin:20px auto 36px;max-width:480px;font-weight:500}
+
+/* ─── FOOTER ─── */
+footer{background:var(--ink);color:var(--paper);padding:52px 0 32px}
+.foot-grid{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap;margin-bottom:36px}
+.foot-brand .logo{color:var(--paper)}
+.foot-brand p{color:#8a8a8a;font-size:13px;margin-top:12px;max-width:260px;line-height:1.5}
+.foot-col h4{font-family:var(--mn);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5a5a5a;margin-bottom:14px}
+.foot-col a{display:block;font-size:13px;color:#9a9a9a;margin-bottom:9px}
+.foot-col a:hover{color:var(--sun)}
+.foot-sns{display:flex;gap:8px;margin-top:18px}
+.foot-sns a{width:34px;height:34px;border-radius:50%;border:1.5px solid #3a3730;display:flex;align-items:center;justify-content:center;color:#7a7363;transition:background .14s,color .14s,border-color .14s}
+.foot-sns a:hover{background:var(--tang);border-color:var(--tang);color:#fff}
+.foot-bottom{border-top:1.5px solid #2a2a2a;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--mn);font-size:11px;color:#5a5a5a}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid rgba(255,255,255,.25)}
+  .dest-grid{grid-template-columns:repeat(2,1fr)}
+  .perf-grid{grid-template-columns:1fr}
+  .perf-num{grid-template-columns:1fr}
+  .pn{border-right:none;border-bottom:2px solid #2c291f}
+  .pn:last-child{border-bottom:none}
+  .why-grid,.hub-grid{grid-template-columns:1fr}
+  .why-card,.hub-card{border-right:none;border-bottom:2.5px solid var(--ink)}
+  .why-card:last-child,.hub-card:last-child{border-bottom:none}
+  .venue-grid{grid-template-columns:1fr}
+  .reg-grid{grid-template-columns:1fr}
+  .map-body{grid-template-columns:repeat(2,1fr)}
+  .insta-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:680px){
+  .wrap{padding:0 20px}
+  .gnb{display:none}
+  .burger{display:flex}
+  .quick{display:none}
+  .track{grid-template-columns:1fr;gap:8px}
+  .slot{grid-template-columns:1fr;gap:6px}
+  .hero h1{font-size:clamp(32px,9vw,54px)}
+  .hero-btns .btn{font-size:14px;padding:14px 22px}
+  .dest-grid{grid-template-columns:1fr 1fr}
+  .topbar-in .topbar-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ① TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>✈ ALL THAT TRAVEL 2027</span><span>✈ 2027.04.30–05.02 · COEX HALL D</span>
+    <span>✈ 관광 신산업 하이브리드 플랫폼</span><span>✈ 트래블테크 · 관광벤처 · 로컬브랜드</span>
+    <span>✈ 사전등록 오픈 — PRE-REGISTRATION OPEN</span><span>✈ BTB 비즈니스 커넥팅 신청 접수 중</span>
+    <span>✈ ALL THAT TRAVEL 2027</span><span>✈ 2027.04.30–05.02 · COEX HALL D</span>
+    <span>✈ 관광 신산업 하이브리드 플랫폼</span><span>✈ 트래블테크 · 관광벤처 · 로컬브랜드</span>
+    <span>✈ 사전등록 오픈 — PRE-REGISTRATION OPEN</span><span>✈ BTB 비즈니스 커넥팅 신청 접수 중</span>
+  </div>
+</div>
+
+<!-- ② TOP BAR: SNS + 마이페이지 + ENG -->
+<div class="topbar">
+  <div class="wrap topbar-in">
+    <div style="display:flex;gap:4px;align-items:center" class="topbar-links">
+      <a href="https://www.instagram.com/all_that_travel_/" target="_blank" title="Instagram" class="sns-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+      <a href="#" title="YouTube" class="sns-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C16.2 2.8 12 2.8 12 2.8s-4.2 0-6.8.2c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.1.7 11.3v2c0 2.1.3 4.2.3 4.2s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C7.4 21.6 12 21.6 12 21.6s4.2 0 6.8-.3c.6-.1 1.9-.1 3-1.3.9-.8 1.2-2.8 1.2-2.8s.3-2.1.3-4.2v-2C23.3 9.1 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z"/></svg></a>
+      <a href="#" title="X" class="sns-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="#" title="Facebook" class="sns-icon"><svg width="12" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg></a>
+    </div>
+    <div class="divider"></div>
+    <a href="#">👤 마이페이지</a>
+    <div class="divider"></div>
+    <a href="#">ENG</a>
+  </div>
+</div>
+
+<!-- ③ GNB 5탭 구조 -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="logo"><span class="dot"></span>ALL THAT TRAVEL</a>
+    <div class="gnb">
+      <!-- 올댓트래블 탭 -->
+      <div class="gnb-item">
+        <button class="gnb-btn" onclick="toggleDrop(this)">올댓트래블 <span class="arr">▾</span></button>
+        <div class="gnb-drop">
+          <a href="#">행사개요</a>
+          <a href="#">부스배치도</a>
+          <a href="#" class="hot">역대 아카이브</a>
+          <a href="#">브로슈어</a>
+        </div>
+      </div>
+      <!-- 참가업체 탭 -->
+      <div class="gnb-item">
+        <button class="gnb-btn" onclick="toggleDrop(this)">참가업체 <span class="arr">▾</span></button>
+        <div class="gnb-drop">
+          <a href="#">참가안내</a>
+          <a href="#">참가신청</a>
+          <a href="#">참가기업 검색</a>
+          <a href="#">FAQ</a>
+          <div class="drop-divider"></div>
+          <div class="drop-label">비즈니스</div>
+          <a href="#" class="new">비즈니스 커넥팅</a>
+          <a href="#" class="new">1:1 매칭 신청</a>
+        </div>
+      </div>
+      <!-- 일반 관람 탭 (핵심 변경) -->
+      <div class="gnb-item">
+        <button class="gnb-btn" onclick="toggleDrop(this)">일반 관람 <span class="arr">▾</span></button>
+        <div class="gnb-drop">
+          <a href="#">관람 안내</a>
+          <a href="#register" class="new">사전등록 (무료)</a>
+          <a href="#">현장 등록 안내 (유료)</a>
+          <a href="#">오시는 길</a>
+          <a href="#">서울 관광 프로그램</a>
+        </div>
+      </div>
+      <!-- 프로그램 탭 -->
+      <div class="gnb-item">
+        <button class="gnb-btn" onclick="toggleDrop(this)">프로그램 <span class="arr">▾</span></button>
+        <div class="gnb-drop">
+          <a href="#">컨퍼런스</a>
+          <a href="#">프로모션·이벤트</a>
+          <a href="#" class="new">전체 스케줄</a>
+        </div>
+      </div>
+      <!-- 공지사항 탭 -->
+      <div class="gnb-item">
+        <button class="gnb-btn" onclick="toggleDrop(this)">공지사항 <span class="arr">▾</span></button>
+        <div class="gnb-drop">
+          <a href="#">공지사항</a>
+          <a href="#">보도자료</a>
+          <a href="#">뉴스레터</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-end">
+      <a href="#register" class="btn tang" style="font-size:13px;padding:10px 16px;box-shadow:3px 3px 0 var(--ink)">사전등록</a>
+      <button class="burger" id="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ④ QUICK MENU (fixed, position:fixed) -->
+<div class="quick">
+  <a href="#register" title="사전등록">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <span>등록</span>
+  </a>
+  <a href="#" title="브로슈어">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <span>브로슈어</span>
+  </a>
+  <a href="#expo" title="부스신청">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+    <span>부스</span>
+  </a>
+  <a href="https://www.instagram.com/all_that_travel_/" target="_blank" title="Instagram" class="ig">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+    <span>인스타</span>
+  </a>
+</div>
+
+<!-- ⑤ HERO: 영상 배경 + 감성 슬로건 + 2버튼 분기 -->
+<header class="hero" id="top">
+  <div class="hero-vid">
+    <!-- 실제 영상 없으면 플레이스홀더 -->
+    <div class="vid-ph" style="background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 40%,#33B8E8 100%)">
+  </div>
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <div class="wrap">
+      <div class="hero-kicker">2027 ALL THAT TRAVEL · COEX HALL D</div>
+      <h1>새로운 여행의 시작,<br>여기서 <em>만나보세요.</em></h1>
+      <div class="hero-date mono">4.30 (목) – 5.2 (토) &nbsp;·&nbsp; Coex Hall D &nbsp;·&nbsp; 서울</div>
+      <!-- ③ 히어로 2버튼 분기 -->
+      <div class="hero-btns">
+        <a href="#register" class="btn" style="background:var(--w);color:var(--ink);border-color:var(--w);box-shadow:5px 5px 0 rgba(0,0,0,.3)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          일반 관람 사전등록 →
+        </a>
+        <a href="#btb" class="btn tang">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          비즈니스 커넥팅 신청 →
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Countdown strip -->
+  <div class="hero-strip">
+    <div class="wrap hero-strip-in">
+      <div class="cd-group">
+        <div class="cd-unit"><div class="n" id="cd-d">--</div><div class="u">Days</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="n" id="cd-h">--</div><div class="u">Hours</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="n" id="cd-m">--</div><div class="u">Min</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="n" id="cd-s">--</div><div class="u">Sec</div></div>
+      </div>
+      <div class="strip-meta">개막까지 · <b>2027.04.30</b> · COEX Hall D</div>
+      <a href="#register" class="btn tang" style="font-size:13px;padding:10px 18px;box-shadow:3px 3px 0 rgba(0,0,0,.3)">사전등록 →</a>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="stats" style="padding:0">
+  <div class="stats-grid">
+    <div class="stat"><div class="n" data-count="300"><span class="num">0</span><sub>+</sub></div><div class="t">참가 브랜드</div></div>
+    <div class="stat"><div class="n" data-count="205"><span class="num">0</span><sub>건</sub></div><div class="t">비즈니스 커넥팅</div></div>
+    <div class="stat"><div class="n" data-count="3"><span class="num">0</span><sub>일</sub></div><div class="t">전시 일수</div></div>
+    <div class="stat"><div class="n" data-count="50"><span class="num">0</span><sub>K+</sub></div><div class="t">예상 관람객</div></div>
+  </div>
+</section>
+
+<!-- 보완01: CONTENT HUB — 로컬 큐레이션 매거진 -->
+<section class="hub" id="hub">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="num">콘텐츠 허브 · CONTENT HUB</span>
+        <h2>미리 만나는<br>올댓트래블 브랜드</h2>
+      </div>
+      <p>행사 전 참가 브랜드와 콘텐츠를 먼저 탐색하세요. 현장에서 놓치지 않을 브랜드를 체크해두세요.</p>
+    </div>
+    <div class="hub-grid reveal">
+      <div class="hub-card">
+        <div class="hc-tag">#로컬브랜드</div>
+        <h3>이달의 로컬 핫플</h3>
+        <p>제주 감귤 향수 브랜드 'CITRUS' — 4.30 첫 팝업 부스 오픈 예정. 한정 100개 선착순.</p>
+        <div class="more">미리보기 <span>→</span></div>
+      </div>
+      <div class="hub-card">
+        <div class="hc-tag">#트래블테크</div>
+        <h3>트래블테크 미리보기</h3>
+        <p>AI 여행 큐레이션 스타트업 'ROAM' — 실시간 로컬 맞춤 여행 코스 생성 데모 체험 가능.</p>
+        <div class="more">미리보기 <span>→</span></div>
+      </div>
+      <div class="hub-card">
+        <div class="hc-tag">#지자체</div>
+        <h3>지자체 특별관 예고</h3>
+        <p>강릉시 워케이션 인프라 소개 + 현장 신청 이벤트. 선착순 체험비 지원 혜택.</p>
+        <div class="more">미리보기 <span>→</span></div>
+      </div>
+    </div>
+    <!-- 인스타그램 피드 연동 -->
+    <div class="insta-strip reveal">
+      <div class="insta-strip-head">
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          인스타그램 최신 피드
+        </span>
+        <a href="https://www.instagram.com/all_that_travel_/" target="_blank">@all_that_travel_ →</a>
+      </div>
+      <div class="insta-grid">
+        <div class="insta-item"><span class="ph">🏝</span></div>
+        <div class="insta-item"><span class="ph">✈</span></div>
+        <div class="insta-item"><span class="ph">🏔</span></div>
+        <div class="insta-item"><span class="ph">🌸</span></div>
+        <div class="insta-item"><span class="ph">🎪</span></div>
+        <div class="insta-item"><span class="ph">🗺</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY VISIT: BTC/BTB/B2G 분기 -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="num">01 / WHY VISIT</span>
+        <h2>트래블테크·로컬·지자체가<br>한자리에</h2>
+      </div>
+      <p>관광 신산업 하이브리드 플랫폼. BTC·BTB·B2G 세 타깃을 모두 위한 자리입니다.</p>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="wc-ic">✈</div>
+        <div class="tag btc" style="margin-bottom:12px">BTC · 일반 관람</div>
+        <h3>여행 소비자 · 가족</h3>
+        <p>AI 여행 플래너 데모 체험, 로컬 브랜드 팝업, 지자체 워케이션 상담. 20대~30대가 자발적으로 찾는 감성 전시.</p>
+      </div>
+      <div class="why-card">
+        <div class="wc-ic">💼</div>
+        <div class="tag btb" style="margin-bottom:12px">BTB · 비즈니스</div>
+        <h3>여행업 종사자 · 바이어</h3>
+        <p>비즈니스 커넥팅 205건 실적. 트래블테크 기업과의 1:1 매칭 신청, 투자자 상담, 파트너십 발굴.</p>
+      </div>
+      <div class="why-card">
+        <div class="wc-ic">🏛</div>
+        <div style="font-family:var(--mn);font-size:11px;color:var(--mint);border:1.5px solid var(--mint);background:rgba(0,200,150,.08);padding:4px 11px;border-radius:30px;letter-spacing:.08em;display:inline-block;margin-bottom:12px">B2G · 지자체</div>
+        <h3>지자체 · 관광 기관</h3>
+        <p>정주인구 확대를 위한 기술·문화 솔루션 직접 소싱. 벤처·스타트업과의 협력 사업 발굴 창구.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZONE TRACKS -->
+<section class="expo" id="expo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="num">02 / EXHIBITION ZONES</span>
+        <h2>4개 테마 전시존</h2>
+      </div>
+      <p>ITB 베를린 방식의 존(Zone) 브랜딩. 관심 구역을 사전 탐색하고 동선을 계획하세요.</p>
+    </div>
+    <div class="track-list reveal">
+      <div class="track">
+        <div class="tn">Z1</div>
+        <div><h3>트래블 테크 존</h3><p>AI 여행 플래너·모빌리티·예약 플랫폼·여행 데이터 스타트업</p></div>
+        <span class="track-tag">HALL D · A구역</span>
+      </div>
+      <div class="track">
+        <div class="tn">Z2</div>
+        <div><h3>관광 벤처 존</h3><p>로컬 크리에이터·여행 콘텐츠 브랜드·체험형 팝업 스토어</p></div>
+        <span class="track-tag">HALL D · B구역</span>
+      </div>
+      <div class="track">
+        <div class="tn">Z3</div>
+        <div><h3>로컬 브랜드 존</h3><p>지역 특산·로컬 F&B·공예·핸드메이드 — K-트래블 라이프스타일</p></div>
+        <span class="track-tag">HALL D · C구역</span>
+      </div>
+      <div class="track">
+        <div class="tn">Z4</div>
+        <div><h3>지자체 특별관</h3><p>17개 시도·워케이션·정주인구 유치 인프라 — 정책 부스 상담</p></div>
+        <span class="track-tag">HALL D · D구역</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="num">03 / PROGRAM SCHEDULE</span>
+        <h2>3일간의 프로그램</h2>
+      </div>
+      <p>서울국제도서전 방식의 개별 예약 시스템. 관심 세션을 사전 예약하세요.</p>
+    </div>
+    <div class="sched-tabs reveal">
+      <button class="sched-tab active" data-day="1">DAY 1<span class="d">04.30 목</span></button>
+      <button class="sched-tab" data-day="2">DAY 2<span class="d">05.01 금</span></button>
+      <button class="sched-tab" data-day="3">DAY 3<span class="d">05.02 토</span></button>
+    </div>
+    <div class="sched-panel active" data-day="1">
+      <div class="slot"><div class="time mono">10:00</div><div><h4>개막식 — ATT 2027 오프닝</h4><div class="loc">코엑스 Hall D 메인스테이지</div></div><span class="badge key">개막</span></div>
+      <div class="slot"><div class="time mono">11:00–13:00</div><div><h4>관광 신산업 기조 컨퍼런스 — 트래블테크 2027 트렌드</h4><div class="loc">컨퍼런스룸 1</div></div><span class="badge key">컨퍼런스</span></div>
+      <div class="slot"><div class="time mono">14:00–18:00</div><div><h4>B2B/B2G 비즈니스 커넥팅 — 업계 전용 매칭 상담</h4><div class="loc">비즈니스 커넥팅 존</div></div><span class="badge">BTB 전용</span></div>
+      <div class="slot"><div class="time mono">18:30</div><div><h4>개막 환영 리셉션</h4><div class="loc">VIP 라운지</div></div><span class="badge">리셉션</span></div>
+    </div>
+    <div class="sched-panel" data-day="2">
+      <div class="slot"><div class="time mono">10:00–20:00</div><div><h4>일반 관람 전면 개방</h4><div class="loc">Hall D 전체</div></div><span class="badge">전시</span></div>
+      <div class="slot"><div class="time mono">11:00</div><div><h4>로컬 브랜드 피칭 — 지자체 바이어 앞 IR</h4><div class="loc">피칭 스테이지</div></div><span class="badge key">피칭</span></div>
+      <div class="slot"><div class="time mono">14:00–16:00</div><div><h4>AI 여행 플래너 데모 체험 — ROAM 오픈 세션</h4><div class="loc">트래블테크 존</div></div><span class="badge">체험</span></div>
+      <div class="slot"><div class="time mono">18:00</div><div><h4>로컬 나이트 — K-로컬 브랜드 팝업 파티</h4><div class="loc">이벤트 스테이지</div></div><span class="badge key">나이트</span></div>
+    </div>
+    <div class="sched-panel" data-day="3">
+      <div class="slot"><div class="time mono">10:00–18:00</div><div><h4>마지막 날 특가 — 폐막 전 최종 할인</h4><div class="loc">Hall D 전체</div></div><span class="badge key">특가</span></div>
+      <div class="slot"><div class="time mono">13:00</div><div><h4>ATT 어워드 2027 — 관광벤처·트래블테크 시상식</h4><div class="loc">메인스테이지</div></div><span class="badge key">어워드</span></div>
+      <div class="slot"><div class="time mono">15:00</div><div><h4>지자체 협력 매칭 결과 발표 & 경품 추첨</h4><div class="loc">메인스테이지</div></div><span class="badge">추첨</span></div>
+      <div class="slot"><div class="time mono">17:00</div><div><h4>폐막식</h4><div class="loc">메인스테이지</div></div><span class="badge">폐막</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 보완02: 성과 데이터 리포트 -->
+<section class="perf" id="archive">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="num" style="color:var(--sun)">보완 02 / 비즈니스 성과 리포트</span>
+        <h2>역대 아카이브 &amp;<br>비즈니스 성과</h2>
+      </div>
+      <p style="color:#9a9482">지자체 담당자·투자자가 예산 집행 근거로 활용 가능한 공신력 있는 성과 데이터.</p>
+    </div>
+    <div class="perf-grid reveal">
+      <div class="perf-card">
+        <div class="pc-icon">📊</div>
+        <h3>비즈니스 매칭 성과 리포트</h3>
+        <p>연도별 B2B 매칭 건수, 계약 체결액, 투자 유치 현황. PDF 다운로드 제공.</p>
+      </div>
+      <div class="perf-card">
+        <div class="pc-icon">🏛</div>
+        <h3>지자체 협력 사례집</h3>
+        <p>강릉시 × 워케이션 스타트업, 제주도 × 로컬 콘텐츠 기업 등 실제 협업 사례. 지역·분야별 필터 탐색.</p>
+      </div>
+      <div class="perf-card">
+        <div class="pc-icon">📈</div>
+        <h3>관광객 유입 성과</h3>
+        <p>협약 체결 후 관광객 유입 변화, 사업 추진 실적 등 공공 성과 사례 제공.</p>
+      </div>
+    </div>
+    <div class="perf-num reveal">
+      <div class="pn"><div class="v" data-count="205"><span class="num2">0</span>건</div><div class="l">2026 비즈니스 커넥팅</div></div>
+      <div class="pn"><div class="v" data-count="17"><span class="num2">0</span>개</div><div class="l">참여 지자체</div></div>
+      <div class="pn"><div class="v" data-count="38"><span class="num2">0</span>억</div><div class="l">협약 체결 추정액</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 보완03: 인터랙티브 부스 맵 -->
+<section id="booth-map">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="num">보완 03 / INTERACTIVE BOOTH MAP</span>
+        <h2>인터랙티브<br>부스 맵</h2>
+      </div>
+      <p>카테고리 필터·관심 부스 즐겨찾기·타깃별 추천 동선. 현장 방문 전 개인 동선을 설계하세요.</p>
+    </div>
+    <div class="map-card reveal">
+      <div class="map-header">
+        <span>COEX Hall D · 부스 배치</span>
+        <span style="font-family:var(--mn);font-size:12px;color:#9a9482">★ 즐겨찾기 = My Map 저장</span>
+      </div>
+      <div class="map-filters">
+        <button class="mf active" onclick="filterBooth(this,'all')">전체</button>
+        <button class="mf" onclick="filterBooth(this,'tech')">🤖 트래블테크</button>
+        <button class="mf" onclick="filterBooth(this,'local')">🌿 로컬브랜드</button>
+        <button class="mf" onclick="filterBooth(this,'gov')">🏛 지자체</button>
+        <button class="mf" onclick="filterBooth(this,'venture')">💡 관광벤처</button>
+      </div>
+      <div class="map-body" id="boothMap">
+        <div class="booth fav" data-type="tech"><div class="b-zone">Z1 · A-01</div><h4>ROAM</h4><div class="b-type">트래블테크</div></div>
+        <div class="booth" data-type="tech"><div class="b-zone">Z1 · A-02</div><h4>TripMind AI</h4><div class="b-type">트래블테크</div></div>
+        <div class="booth" data-type="local"><div class="b-zone">Z3 · C-01</div><h4>CITRUS 제주</h4><div class="b-type">로컬브랜드</div></div>
+        <div class="booth fav" data-type="local"><div class="b-zone">Z3 · C-02</div><h4>강릉 솔향</h4><div class="b-type">로컬브랜드</div></div>
+        <div class="booth" data-type="gov"><div class="b-zone">Z4 · D-01</div><h4>강릉시</h4><div class="b-type">지자체</div></div>
+        <div class="booth" data-type="gov"><div class="b-zone">Z4 · D-02</div><h4>제주도</h4><div class="b-type">지자체</div></div>
+        <div class="booth" data-type="venture"><div class="b-zone">Z2 · B-01</div><h4>여행 사이</h4><div class="b-type">관광벤처</div></div>
+        <div class="booth fav" data-type="venture"><div class="b-zone">Z2 · B-02</div><h4>로컬랩</h4><div class="b-type">관광벤처</div></div>
+        <div class="booth" data-type="tech"><div class="b-zone">Z1 · A-03</div><h4>MoveX</h4><div class="b-type">트래블테크</div></div>
+        <div class="booth" data-type="local"><div class="b-zone">Z3 · C-03</div><h4>경주 한옥</h4><div class="b-type">로컬브랜드</div></div>
+        <div class="booth" data-type="gov"><div class="b-zone">Z4 · D-03</div><h4>전주시</h4><div class="b-type">지자체</div></div>
+        <div class="booth" data-type="venture"><div class="b-zone">Z2 · B-03</div><h4>Wandr</h4><div class="b-type">관광벤처</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VENUE -->
+<section class="venue" id="venue">
+  <div class="wrap">
+    <div class="venue-grid reveal">
+      <div class="venue-info">
+        <span style="font-family:var(--mn);font-size:13px;letter-spacing:.1em;color:var(--tang)">04 / VENUE</span>
+        <h3 style="margin-top:12px">서울 코엑스<br>COEX Hall D</h3>
+        <p class="addr">서울특별시 강남구 영동대로 513<br>지하철 2호선 삼성역 · 9호선 봉은사역</p>
+        <ul class="venue-feats">
+          <li>Hall D 단독 운영 — 집중형 전시 구성</li>
+          <li>삼성역 직결 · 도보 3분</li>
+          <li>인천공항 공항버스 직행 연결</li>
+          <li>주차 3,000대 · 호텔·식당가 도보 연결</li>
+        </ul>
+      </div>
+      <div class="venue-map">
+        <div class="map-grid-bg"></div>
+        <div class="map-pin"><span class="big">📍</span>COEX Hall D</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④ REGISTER: BTC/BTB 탭 분리 -->
+<section class="reg-section" id="register">
+  <div class="wrap reg-grid" id="btb">
+    <div class="reg-left reveal">
+      <span style="font-family:var(--mn);font-size:13px;letter-spacing:.1em;color:var(--sun)">05 / 사전관람 등록</span>
+      <h2 style="margin-top:14px">사전등록하면<br>입장이 더 빠릅니다</h2>
+      <p>현장 줄 없이 QR 바로 입장. 세션 사전 예약 링크 사전 발송. 경품 추첨 자동 응모.</p>
+      <div class="pass-type">
+        <div class="pt-head"><span class="tag btc">BTC</span><h4>일반 관람객</h4></div>
+        <p>여행·관광에 관심 있는 일반인. 무료 입장 · 현장 팝업 체험 · 경품 응모.</p>
+      </div>
+      <div class="pass-type">
+        <div class="pt-head"><span class="tag btb">BTB</span><h4>비즈니스 참관객</h4></div>
+        <p>여행업 종사자·관광청·지자체·투자자. DAY 1 B2B 전용 상담 + 비즈니스 뱃지 발급.</p>
+      </div>
+    </div>
+    <div class="reg-form reveal">
+      <div id="formFields">
+        <div class="pass-tabs">
+          <button type="button" class="pass-tab btc active" id="tab-btc" onclick="switchTab('btc')">
+            ✈ BTC<span style="display:block;font-family:var(--mn);font-size:10px;font-weight:400;opacity:.75;margin-top:2px">일반 관람</span>
+          </button>
+          <button type="button" class="pass-tab btb" id="tab-btb" onclick="switchTab('btb')">
+            💼 BTB<span style="display:block;font-family:var(--mn);font-size:10px;font-weight:400;opacity:.75;margin-top:2px">비즈니스</span>
+          </button>
+        </div>
+        <!-- BTC -->
+        <div class="pass-panel active" id="panel-btc">
+          <span class="tag btc" style="margin-bottom:16px">BTC · 일반 관람객 · 무료</span>
+          <div style="height:10px"></div>
+          <label for="btc-name">이름</label>
+          <input type="text" id="btc-name" placeholder="홍길동">
+          <label for="btc-email">이메일</label>
+          <input type="email" id="btc-email" placeholder="you@example.com">
+          <label for="btc-day">관람 희망일</label>
+          <select id="btc-day">
+            <option>4.30 (목) 개막일 · B2B+일반</option>
+            <option>5.01 (금)</option>
+            <option>5.02 (토) 폐막일</option>
+          </select>
+          <button type="button" class="btn" style="background:var(--sky);width:100%;justify-content:center;font-size:15px;padding:15px;margin-top:4px" onclick="submitForm('btc')">무료 입장권 받기 →</button>
+        </div>
+        <!-- BTB -->
+        <div class="pass-panel" id="panel-btb">
+          <span class="tag btb" style="margin-bottom:16px">BTB · 비즈니스 · 업계 인증</span>
+          <div style="height:10px"></div>
+          <label for="btb-name">이름</label>
+          <input type="text" id="btb-name" placeholder="홍길동">
+          <label for="btb-org">소속 기관 / 회사</label>
+          <input type="text" id="btb-org" placeholder="(주)여행사 / 강릉시청">
+          <label for="btb-email">이메일 (업무용)</label>
+          <input type="email" id="btb-email" placeholder="you@company.com">
+          <label for="btb-role">직종</label>
+          <select id="btb-role">
+            <option>여행사 / PCO</option>
+            <option>트래블테크·스타트업</option>
+            <option>지자체 관광 담당</option>
+            <option>투자자 / VC</option>
+            <option>항공·호텔·크루즈</option>
+            <option>기타 업계 종사자</option>
+          </select>
+          <button type="button" class="btn tang" style="width:100%;justify-content:center;font-size:15px;padding:15px;margin-top:4px" onclick="submitForm('btb')">비즈니스 뱃지 신청 →</button>
+        </div>
+      </div>
+      <div class="form-ok" id="formOk">
+        <div class="ok-ic">✓</div>
+        <h3>등록 완료!</h3>
+        <p><b id="ok-name">방문객</b>님, 이메일로 입장권을 보내드렸습니다.<br>ALL THAT TRAVEL 2027에서 만나요!</p>
+        <div class="reg-num" id="ok-seat"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="num">06 / FAQ</span>
+        <h2>자주 묻는 질문</h2>
+      </div>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q">BTC와 BTB 차이가 뭔가요?<span class="pm">+</span></button>
+        <div class="faq-a"><p>BTC(Business to Consumer)는 일반 관람객으로 무료 사전등록 후 입장합니다. BTB(Business to Business)는 여행업 종사자·지자체·투자자 등 업계 관계자로, DAY 1 전용 B2B 상담에 참여하고 비즈니스 뱃지가 발급됩니다. 명함 지참 시 현장 신청도 가능합니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">비즈니스 커넥팅은 어떻게 신청하나요?<span class="pm">+</span></button>
+        <div class="faq-a"><p>BTB 사전등록 완료 후 발송되는 이메일의 '비즈니스 커넥팅 신청' 링크를 통해 1:1 매칭을 신청하실 수 있습니다. 관심 분야(트래블테크·로컬브랜드·지자체·투자)를 선택하시면 매칭 알고리즘이 상대를 추천합니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">지자체 참가안내는 어디서 확인하나요?<span class="pm">+</span></button>
+        <div class="faq-a"><p>GNB의 '참가업체' 탭 내 지자체 참가안내 메뉴에서 확인하실 수 있습니다. 부스 신청, 협찬·후원 문의, 비즈니스 커넥팅 매칭 신청이 모두 한 탭에서 가능합니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">역대 아카이브와 성과 리포트는 어디서 볼 수 있나요?<span class="pm">+</span></button>
+        <div class="faq-a"><p>'올댓트래블' 탭 > '역대 아카이브' 메뉴에서 연도별 참가기업, 비즈니스 매칭 성과, 지자체 협력 사례집, 관광객 유입 성과 리포트를 PDF로 다운로드하실 수 있습니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">컨퍼런스 세션은 별도 예약이 필요한가요?<span class="pm">+</span></button>
+        <div class="faq-a"><p>네. 주요 컨퍼런스·포럼 세션은 좌석이 한정되어 사전 예약이 필요합니다. '프로그램' 탭 > '전체 스케줄'에서 세션별 예약이 가능하며, 사전등록 완료 후 예약 시스템이 활성화됩니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>테크와 로컬이 결합된,<br>가장 트렌디한 관광 플랫폼.</h2>
+    <p>관광 신산업 하이브리드 플랫폼 — 이 정체성을 직접 경험하세요.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="#register" class="btn ink lg">일반 관람 사전등록 →</a>
+      <a href="#btb" class="btn lg" style="background:var(--w);color:var(--ink);border-color:var(--ink)">비즈니스 커넥팅 신청 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo"><span class="dot"></span>ALL THAT TRAVEL</div>
+        <p>관광 신산업 하이브리드 플랫폼<br>2027.04.30–05.02 · 서울 코엑스 Hall D</p>
+        <div class="foot-sns">
+          <a href="https://www.instagram.com/all_that_travel_/" target="_blank" title="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" title="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C16.2 2.8 12 2.8 12 2.8s-4.2 0-6.8.2c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.1.7 11.3v2c0 2.1.3 4.2.3 4.2s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C7.4 21.6 12 21.6 12 21.6s4.2 0 6.8-.3c.6-.1 1.9-.1 3-1.3.9-.8 1.2-2.8 1.2-2.8s.3-2.1.3-4.2v-2C23.3 9.1 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z"/></svg></a>
+          <a href="#" title="X"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>올댓트래블</h4>
+        <a href="#">행사개요</a>
+        <a href="#">부스배치도</a>
+        <a href="#archive">역대 아카이브</a>
+        <a href="#">브로슈어</a>
+      </div>
+      <div class="foot-col">
+        <h4>참가업체</h4>
+        <a href="#">참가안내 / 신청</a>
+        <a href="#">참가기업 검색</a>
+        <a href="#">비즈니스 커넥팅</a>
+        <a href="#">1:1 매칭 신청</a>
+      </div>
+      <div class="foot-col">
+        <h4>일반 관람</h4>
+        <a href="#register">사전등록 (무료)</a>
+        <a href="#">현장 등록 안내</a>
+        <a href="#">오시는 길</a>
+        <a href="#">서울 관광 프로그램</a>
+      </div>
+      <div class="foot-col">
+        <h4>문의</h4>
+        <a href="mailto:info@allthattravel.kr">info@allthattravel.kr</a>
+        <a href="tel:0212345678">02-1234-5678</a>
+        <a href="#">언론 보도문의</a>
+        <a href="#">부스 참가문의</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2027 ALL THAT TRAVEL ORGANIZING COMMITTEE</span>
+      <span>COEX Hall D · SEOUL, KOREA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Countdown */
+const target = new Date('2027-04-30T10:00:00+09:00').getTime();
+const z = n => String(n).padStart(2,'0');
+function tick(){
+  let d = Math.max(0, target - Date.now());
+  const days = Math.floor(d/864e5); d %= 864e5;
+  const hrs = Math.floor(d/36e5); d %= 36e5;
+  const min = Math.floor(d/6e4); d %= 6e4;
+  const sec = Math.floor(d/1e3);
+  document.getElementById('cd-d').textContent = days;
+  document.getElementById('cd-h').textContent = z(hrs);
+  document.getElementById('cd-m').textContent = z(min);
+  document.getElementById('cd-s').textContent = z(sec);
+}
+tick(); setInterval(tick, 1000);
+
+/* Stat count-up */
+const statObs = new IntersectionObserver(es => es.forEach(e => {
+  if(!e.isIntersecting) return;
+  const numEl = e.target.querySelector('.num'), goal = +e.target.dataset.count;
+  let cur = 0, step = Math.max(1, Math.ceil(goal/50));
+  (function run(){ cur = Math.min(goal, cur+step); numEl.textContent = cur; if(cur < goal) requestAnimationFrame(run); })();
+  statObs.unobserve(e.target);
+}), {threshold:.5});
+document.querySelectorAll('.stat .n[data-count]').forEach(el => statObs.observe(el));
+
+/* Perf num count-up */
+const perfObs = new IntersectionObserver(es => es.forEach(e => {
+  if(!e.isIntersecting) return;
+  const numEl = e.target.querySelector('.num2'), goal = +e.target.dataset.count;
+  let cur = 0, step = Math.max(1, Math.ceil(goal/40));
+  (function run(){ cur = Math.min(goal, cur+step); numEl.textContent = cur; if(cur < goal) requestAnimationFrame(run); })();
+  perfObs.unobserve(e.target);
+}), {threshold:.5});
+document.querySelectorAll('.pn .v[data-count]').forEach(el => perfObs.observe(el));
+
+/* Reveal */
+const revObs = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+}), {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+/* Schedule tabs */
+document.querySelectorAll('.sched-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const day = tab.dataset.day;
+    document.querySelectorAll('.sched-tab').forEach(t => t.classList.toggle('active', t === tab));
+    document.querySelectorAll('.sched-panel').forEach(p => p.classList.toggle('active', p.dataset.day === day));
+  });
+});
+
+/* FAQ */
+document.querySelectorAll('.faq-q').forEach(q => q.addEventListener('click', () => {
+  const item = q.parentElement, a = item.querySelector('.faq-a');
+  a.style.maxHeight = item.classList.toggle('open') ? a.scrollHeight + 'px' : 0;
+}));
+
+/* GNB dropdown */
+function toggleDrop(btn){
+  const drop = btn.nextElementSibling;
+  const isOpen = drop.classList.contains('show');
+  document.querySelectorAll('.gnb-drop').forEach(d => d.classList.remove('show'));
+  document.querySelectorAll('.gnb-btn').forEach(b => b.classList.remove('open'));
+  if(!isOpen){ drop.classList.add('show'); btn.classList.add('open'); }
+}
+document.addEventListener('click', e => {
+  if(!e.target.closest('.gnb-item')){
+    document.querySelectorAll('.gnb-drop').forEach(d => d.classList.remove('show'));
+    document.querySelectorAll('.gnb-btn').forEach(b => b.classList.remove('open'));
+  }
+});
+
+/* BTC/BTB tab */
+function switchTab(type){
+  ['btc','btb'].forEach(t => {
+    document.getElementById('tab-'+t).classList.toggle('active', t === type);
+    document.getElementById('panel-'+t).classList.toggle('active', t === type);
+  });
+}
+
+/* Form submit */
+function submitForm(type){
+  const nameEl = document.getElementById(type+'-name');
+  const name = (nameEl && nameEl.value.trim()) || '방문객';
+  document.getElementById('ok-name').textContent = name;
+  const label = type === 'btb' ? 'BTB 비즈니스 뱃지' : 'BTC 무료 입장권';
+  document.getElementById('ok-seat').textContent = label + ' · No. ' + String(Math.floor(Math.random()*9000)+1000).padStart(6,'0');
+  document.getElementById('formFields').style.display = 'none';
+  document.getElementById('formOk').style.display = 'block';
+}
+
+/* Booth map filter */
+function filterBooth(btn, type){
+  document.querySelectorAll('.mf').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.booth').forEach(b => {
+    b.style.display = (type === 'all' || b.dataset.type === type) ? '' : 'none';
+  });
+}
+
+/* Burger */
+document.getElementById('burger').addEventListener('click', () => {
+  document.getElementById('register').scrollIntoView({behavior:'smooth'});
+});
+</script>
+</body>
+</html>
