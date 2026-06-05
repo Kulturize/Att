@@ -1069,22 +1069,32 @@ function resizeYT(){
   var iframe = document.querySelector('#yt-bg iframe');
   if(!iframe) return;
   var vw = window.innerWidth, vh = window.innerHeight;
-  var w = Math.max(vw, vh * 16/9) + 200;
-  var h = Math.max(vh, vw * 9/16) + 200;
-  iframe.style.width  = w + 'px';
-  iframe.style.height = h + 'px';
-  iframe.style.position = 'absolute';
-  iframe.style.top  = '50%';
-  iframe.style.left = '50%';
-  iframe.style.transform = 'translate(-50%,-50%)';
-  iframe.style.pointerEvents = 'none';
-  iframe.style.border = 'none';
+  // 16:9 비율 기준으로 뷰포트를 완전히 덮는 크기 계산
+  var byWidth  = { w: vw,        h: vw  * 9/16 };
+  var byHeight = { w: vh * 16/9, h: vh          };
+  var w = Math.max(byWidth.w, byHeight.w) + 400;
+  var h = Math.max(byWidth.h, byHeight.h) + 400;
+  iframe.style.cssText = [
+    'position:absolute',
+    'top:50%', 'left:50%',
+    'transform:translate(-50%,-50%)',
+    'width:'  + w + 'px',
+    'height:' + h + 'px',
+    'pointer-events:none',
+    'border:none',
+    'min-width:100%',
+    'min-height:100%'
+  ].join(';');
 }
 window.addEventListener('resize', resizeYT);
-// YT iframe 생성 후 크기 맞추기 (폴링)
 var _rstimer = setInterval(function(){
-  if(document.querySelector('#yt-bg iframe')){ resizeYT(); clearInterval(_rstimer); }
-}, 300);
+  if(document.querySelector('#yt-bg iframe')){
+    resizeYT();
+    clearInterval(_rstimer);
+    // 0.5초 후 한 번 더 (렌더링 안정화)
+    setTimeout(resizeYT, 500);
+  }
+}, 200);
 
 </script>
 </body>
