@@ -90,7 +90,8 @@ nav{position:sticky;top:0;z-index:70;background:var(--paper);border-bottom:2px s
 
 /* ─── HERO (video bg) ─── */
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
-.hero-vid{position:absolute;inset:0;z-index:0}
+.hero-vid{position:absolute;inset:0;z-index:0;overflow:hidden;width:100%;height:100%}
+#yt-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:177.78vh;height:100vh;min-width:100vw;min-height:56.25vw;pointer-events:none;z-index:0}
 .hero-vid video,.hero-vid .vid-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero-vid .vid-ph{background:linear-gradient(135deg,#0d1b3e 0%,#1a3a6b 40%,#0c3352 70%,#0a1f3d 100%);display:flex;align-items:center;justify-content:center}
 .hero-vid .vid-ph .ph-text{font-family:var(--dp);font-weight:800;font-size:clamp(14px,2vw,22px);color:rgba(255,255,255,.12);letter-spacing:.2em;text-transform:uppercase}
@@ -1064,35 +1065,12 @@ function onYouTubeIframeAPIReady(){
   });
 }
 
-/* iframe 크기를 항상 꽉 채우도록 리사이즈 */
-function resizeYT(){
-  var iframe = document.querySelector('#yt-bg iframe');
-  if(!iframe) return;
-  var vw = window.innerWidth, vh = window.innerHeight;
-  // 16:9 비율 기준으로 뷰포트를 완전히 덮는 크기 계산
-  var byWidth  = { w: vw,        h: vw  * 9/16 };
-  var byHeight = { w: vh * 16/9, h: vh          };
-  var w = Math.max(byWidth.w, byHeight.w) + 400;
-  var h = Math.max(byWidth.h, byHeight.h) + 400;
-  iframe.style.cssText = [
-    'position:absolute',
-    'top:50%', 'left:50%',
-    'transform:translate(-50%,-50%)',
-    'width:'  + w + 'px',
-    'height:' + h + 'px',
-    'pointer-events:none',
-    'border:none',
-    'min-width:100%',
-    'min-height:100%'
-  ].join(';');
-}
-window.addEventListener('resize', resizeYT);
+/* iframe은 CSS로만 제어 — JS resize 불필요 */
 var _rstimer = setInterval(function(){
-  if(document.querySelector('#yt-bg iframe')){
-    resizeYT();
+  var iframe = document.querySelector('#yt-bg iframe');
+  if(iframe){
+    iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;border:none';
     clearInterval(_rstimer);
-    // 0.5초 후 한 번 더 (렌더링 안정화)
-    setTimeout(resizeYT, 500);
   }
 }, 200);
 
