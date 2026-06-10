@@ -20,7 +20,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--bd);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:var(--bd);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.7}
 a{color:inherit;text-decoration:none} button{font-family:inherit;cursor:pointer}
 img{max-width:100%;display:block}
 body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.015;
@@ -97,11 +97,11 @@ nav{position:sticky;top:0;z-index:70;background:var(--paper);border-bottom:2px s
 .hero-vid .vid-ph .ph-text{font-family:var(--dp);font-weight:800;font-size:clamp(14px,2vw,22px);color:rgba(255,255,255,.12);letter-spacing:.2em;text-transform:uppercase}
 .hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(12,16,30,.2) 0%,rgba(12,16,30,.55) 60%,rgba(12,16,30,.82) 100%)}
 .hero-content{position:relative;z-index:2;padding:0 0 72px;width:100%}
-.hero-kicker{font-family:var(--mn);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.hero-kicker{font-family:var(--mn);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:10px;margin-bottom:20px;white-space:nowrap;flex-wrap:nowrap;overflow:hidden}
 .hero-kicker::before{content:"";width:28px;height:2px;background:var(--tang)}
-.hero h1{font-family:var(--dp);font-weight:800;font-size:clamp(38px,6.5vw,90px);line-height:.95;letter-spacing:-.03em;color:#fff;word-break:keep-all;text-wrap:balance;margin-bottom:24px}
+.hero h1{font-family:var(--dp);font-weight:800;font-size:clamp(36px,6vw,84px);line-height:1.05;letter-spacing:-.03em;color:#fff;word-break:keep-all;text-wrap:balance;margin-bottom:24px}
 .hero h1 em{font-style:normal;background:var(--tang);padding:0 .1em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.hero-date{font-family:var(--mn);font-size:15px;color:rgba(255,255,255,.7);letter-spacing:.08em;margin-bottom:40px}
+.hero-date{font-family:var(--mn);font-size:13px;color:rgba(255,255,255,.7);letter-spacing:.06em;margin-bottom:36px;word-break:keep-all}
 /* ① 2버튼 분기 */
 .hero-btns{display:flex;gap:16px;flex-wrap:wrap}
 .hero-btns .btn{font-size:16px;padding:16px 30px;box-shadow:5px 5px 0 rgba(0,0,0,.4)}
@@ -129,7 +129,7 @@ nav{position:sticky;top:0;z-index:70;background:var(--paper);border-bottom:2px s
 /* ─── SECTION SHARED ─── */
 section{padding:88px 0}
 .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:52px;flex-wrap:wrap}
-.sec-head h2{font-family:var(--dp);font-weight:800;font-size:clamp(30px,4.5vw,54px);line-height:.97;letter-spacing:-.025em;word-break:keep-all}
+.sec-head h2{font-family:var(--dp);font-weight:800;font-size:clamp(30px,4.5vw,54px);line-height:1.1;letter-spacing:-.025em;word-break:keep-all}
 .sec-head .num{font-family:var(--mn);font-size:13px;color:var(--tang);letter-spacing:.1em;display:block;margin-bottom:10px}
 .sec-head p{max-width:340px;font-size:15px;color:#4a463a;line-height:1.6}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
@@ -329,10 +329,27 @@ footer{background:var(--ink);color:var(--paper);padding:52px 0 32px}
   .quick{display:none}
   .track{grid-template-columns:1fr;gap:8px}
   .slot{grid-template-columns:1fr;gap:6px}
-  .hero h1{font-size:clamp(32px,9vw,54px)}
-  .hero-btns .btn{font-size:14px;padding:14px 22px}
+  /* 히어로 모바일 */
+  .hero{min-height:100svh}
+  .hero h1{font-size:clamp(30px,8.5vw,48px);line-height:1.1;margin-bottom:18px}
+  .hero-kicker{font-size:10px;letter-spacing:.1em;white-space:normal;flex-wrap:wrap}
+  .hero-date{font-size:11px;letter-spacing:.04em;margin-bottom:24px;word-break:keep-all}
+  .hero-btns{flex-direction:column;gap:12px}
+  .hero-btns .btn{font-size:14px;padding:14px 20px;width:100%;justify-content:center}
+  .hero-content{padding:0 0 100px}
+  /* strip 모바일 */
+  .hero-strip-in{flex-direction:column;height:auto;padding:14px 0;gap:10px;text-align:center}
+  .cd-unit .n{font-size:20px}
+  .strip-meta{font-size:10px}
+  /* 기타 */
   .dest-grid{grid-template-columns:1fr 1fr}
   .topbar-in .topbar-links{display:none}
+  .reg-grid{grid-template-columns:1fr}
+  .sched-tabs{overflow-x:auto;width:100%}
+  .sched-tab{padding:12px 16px;font-size:13px}
+  .hub-grid{grid-template-columns:1fr;gap:16px}
+  .why-grid{grid-template-columns:1fr;gap:16px}
+  .stats-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -465,7 +482,7 @@ footer{background:var(--ink);color:var(--paper);padding:52px 0 32px}
     <div class="wrap">
       <div class="hero-kicker">2027 ALL THAT TRAVEL · COEX HALL D</div>
       <h1>새로운 여행의 시작,<br>여기서 <em>만나보세요.</em></h1>
-      <div class="hero-date mono">4.30 (목) – 5.2 (토) &nbsp;·&nbsp; Coex Hall D &nbsp;·&nbsp; 서울</div>
+      <div class="hero-date mono"><span style="white-space:nowrap">4.30 (목) – 5.2 (토)</span> &nbsp;·&nbsp; <span style="white-space:nowrap">Coex Hall D · 서울</span></div>
       <!-- ③ 히어로 2버튼 분기 -->
       <div class="hero-btns">
         <a href="#register" class="btn" style="background:var(--w);color:var(--ink);border-color:var(--w);box-shadow:5px 5px 0 rgba(0,0,0,.3)">
